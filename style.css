@@ -1,0 +1,335 @@
+/* --- 1. VARIÁVEIS DE CORES (A Paleta da Van) --- */
+:root {
+    --van-amarelo: #FFD700; /* Amarelo Ouro */
+    --van-preto: #1a1a1a;   /* Preto suave */
+    --fundo-site: #f0f2f5;  /* Cinza gelo */
+    --texto-cor: #333333;
+    --borda-suave: #cccccc;
+    --sucesso: #28a745;
+    --erro: #dc3545;
+}
+
+/* --- 2. RESET BÁSICO --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--fundo-site);
+    color: var(--texto-cor);
+    min-height: 100vh;
+}
+
+/* --- 3. PÁGINAS DE LOGIN E CADASTRO (Centralizadas) --- */
+body.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--van-preto) 0%, #333 100%);
+}
+
+.auth-card {
+    background: white;
+    width: 100%;
+    max-width: 400px; /* Largura padrão para login */
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    overflow: hidden;
+    position: relative;
+    padding: 2rem;
+    margin: 0 auto; /* Centraliza se não for flex */
+}
+
+/* Detalhe da faixa escolar no topo do card */
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 10px;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--van-preto),
+        var(--van-preto) 20px,
+        var(--van-amarelo) 20px,
+        var(--van-amarelo) 40px
+    );
+    border-bottom: 4px solid var(--van-preto);
+}
+
+.auth-card h2, .auth-card h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--van-preto);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--van-amarelo);
+    display: inline-block;
+    padding-bottom: 5px;
+    width: 100%;
+}
+
+/* --- 4. FORMULÁRIOS --- */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--van-preto);
+    font-size: 0.9rem;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: var(--van-amarelo);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+/* --- 5. BOTÕES GERAIS --- */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--van-preto);
+    color: var(--van-amarelo);
+    border: 2px solid var(--van-preto);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: var(--van-amarelo);
+    color: var(--van-preto);
+}
+
+/* Botão Genérico para ações na página (ex: + Nova Van no meio da tela) */
+.btn-novo {
+    background-color: var(--van-amarelo);
+    color: var(--van-preto);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 2px solid var(--van-amarelo);
+    transition: all 0.3s;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-novo:hover {
+    background-color: white;
+    border-color: var(--van-preto);
+}
+
+/* --- 6. LINKS E MENSAGENS --- */
+.auth-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.auth-link:hover {
+    color: var(--van-preto);
+    text-decoration: underline;
+}
+
+.msg-erro {
+    background: #ffebee;
+    color: var(--erro);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+    border-left: 5px solid var(--erro);
+}
+
+.msg-sucesso {
+    background: #e8f5e9;
+    color: var(--sucesso);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+    border-left: 5px solid var(--sucesso);
+}
+
+/* --- 7. CABEÇALHO E MENU (Versão Final Alinhada) --- */
+.main-header {
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 15px;
+    border-bottom: 4px solid var(--van-amarelo);
+}
+
+.header-logo a {
+    text-decoration: none;
+    color: white;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço uniforme entre os botões */
+    flex-wrap: wrap;
+}
+
+/* Estilo Base do Botão do Menu */
+.btn-nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    padding: 0 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Cores dos Botões do Menu */
+.btn-escolas { background-color: white; color: #007bff; border-color: #007bff; }
+.btn-bairros { background-color: white; color: #b78900; border-color: #b78900; }
+.btn-rotas { background-color: #222; color: #ffc107; border-color: #ffc107; }
+.btn-alugar { background-color: #17a2b8; color: white; }
+.btn-frota { background-color: #e9ecef; color: #333; }
+.btn-alunos { background-color: #28a745; color: white; }
+.btn-sair-menu { background-color: #dc3545; color: white; }
+
+.btn-nav.ativo {
+    border: 2px solid white;
+    box-shadow: 0 0 8px rgba(255,255,255,0.4);
+}
+
+/* --- 8. TABELAS E LISTAS --- */
+.tabela-frota, .tabela-alunos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tabela-frota th, .tabela-alunos th, .tabela-frota td, .tabela-alunos td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.tabela-frota th, .tabela-alunos th {
+    background-color: var(--van-preto);
+    color: var(--van-amarelo);
+}
+
+/* --- 9. BOTÕES DE AÇÃO PEQUENOS (Editar/Excluir) --- */
+.btn-acao, .btn-editar, .btn-excluir {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 5px;
+    font-weight: bold;
+    display: inline-block;
+    border: none;
+    width: auto;
+    cursor: pointer;
+}
+
+.btn-editar { background-color: #007bff; color: white; }
+.btn-excluir { background-color: var(--erro); color: white; }
+
+/* --- 10. ELEMENTOS VISUAIS (Badges, Switch, Barras) --- */
+
+/* Badge de Turno */
+.badge-turno {
+    display: inline-block;
+    padding: 2px 8px;
+    background-color: #e9ecef;
+    color: #495057;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    margin-right: 5px;
+    margin-top: 5px;
+    font-weight: bold;
+    border: 1px solid #ced4da;
+}
+.turno-manha { background-color: #cce5ff; color: #004085; }
+.turno-tarde { background-color: #fff3cd; color: #856404; }
+.turno-noite { background-color: #d6d8d9; color: #1b1e21; }
+
+/* Barra de Progresso */
+.barra-container {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    height: 20px;
+    width: 100%;
+    margin-top: 5px;
+    overflow: hidden;
+}
+.barra-progresso {
+    height: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    line-height: 20px;
+    transition: width 0.5s;
+}
+
+/* Cores de status */
+.bg-verde { background-color: #28a745; }
+.bg-amarelo { background-color: #ffc107; color: #333; }
+.bg-vermelho { background-color: #dc3545; }
+
+/* Switch Toggle (Botão de aluguel) */
+.switch { position: relative; display: inline-block; width: 50px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute; cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc; transition: .4s; border-radius: 34px;
+}
+.slider:before {
+    position: absolute; content: "";
+    height: 16px; width: 16px;
+    left: 4px; bottom: 4px;
+    background-color: white; transition: .4s; border-radius: 50%;
+}
+input:checked + .slider { background-color: var(--van-amarelo); }
+input:checked + .slider:before { transform: translateX(26px); }
+
+/* Grid de Cards (Usado em Alugar Van ou listas) */
+.grid-vans {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
